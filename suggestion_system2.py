@@ -33,5 +33,21 @@ def main():
     print("      WELCOME TO AMAZON SHOPPING SYSTEM      ")
     print("="*50)
 
+
+# 2. MAIN SHOPPING LOOP
+    while True:
+        print("\n--- CATEGORIES ---")
+        print("Available categories: tech, books, audio, fitness")
+        
+        # Keep asking until a valid category is entered
+        category_choice = input("What are you looking for? (or type 'checkout' to pay): ").strip().lower()
+        
+        if category_choice == 'checkout':
+            break
+            
+        if category_choice not in valid_categories:
+            print(">>> Invalid category! Please choose from the list above.")
+            continue
+
 if __name__ == '__main__':
     main()
