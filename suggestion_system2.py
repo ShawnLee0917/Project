@@ -69,6 +69,26 @@ def main():
                 break
 
 
+
+# Validate selected item
+            selected_item = next((p for p in category_items if p.item_id == item_choice), None)
             
+            if selected_item:
+                qty_input = input(f"How many '{selected_item.name}' would you like? ")
+                
+                if qty_input.isdigit() and int(qty_input) > 0:
+                    qty = int(qty_input)
+                    cart.append({'product': selected_item, 'qty': qty})
+                    print(f">>> Success! Added {qty}x {selected_item.name} to cart.")
+                else:
+                    print(">>> Invalid quantity! Must be a positive number.")
+            else:
+                print(">>> Invalid Product ID! Please try again.")
+                
+        # If user typed 'checkout' from inside the category loop, break the main loop too
+        if item_choice == 'CHECKOUT':
+            break
+
+
 if __name__ == '__main__':
     main()
