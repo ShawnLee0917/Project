@@ -151,3 +151,6 @@ def main():
         print(f"[{product.item_id}] {product.name} - Match: {score}% | Price: RM {product.price:.2f}")
         print(f"    Tags: {product.tags}")
         print(f"    Desc: {product.description}\n")
+
+if __name__ == '__main__':
+    main()
