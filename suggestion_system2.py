@@ -49,5 +49,26 @@ def main():
             print(">>> Invalid category! Please choose from the list above.")
             continue
 
+
+
+# 3. CATEGORY BROWSING LOOP
+        while True:
+            print(f"\n--- {category_choice.upper()} PRODUCTS ---")
+            
+            # Display items in the selected category
+            category_items = [p for p in amazon_products if p.category == category_choice]
+            for item in category_items:
+                print(f"[{item.item_id}] {item.name:<30} : RM {item.price:.2f}")
+                
+            print("-" * 45)
+            item_choice = input(f"Enter Product ID to buy, 'back' to change category, or 'checkout': ").strip().upper()
+            
+            if item_choice == 'CHECKOUT':
+                break
+            elif item_choice == 'BACK':
+                break
+
+
+            
 if __name__ == '__main__':
     main()
