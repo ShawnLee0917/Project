@@ -90,5 +90,57 @@ def main():
             break
 
 
+
+# 4. UNIFIED CHECKOUT & RECEIPT SETTLEMENT
+    if not cart:
+        print("\nYour cart is empty. Thank you for visiting Amazon!")
+        return
+
+    print("\n" + "="*50)
+    print("          AMAZON PRIME CHECKOUT SYSTEM          ")
+    print("="*50)
+    
+    is_prime = input("Are you an Amazon Prime Member? (Y/N): ").strip().upper()
+    
+    subtotal = sum(item['product'].price * item['qty'] for item in cart)
+    shipping_fee = 0.0
+    discount = 0.0
+    
+    # Core Logic for Rubric Requirement (if/elif/else)
+    if is_prime == 'Y':
+        print("\n[Prime Member] Applying Free Premium Shipping & 10% Discount...")
+        shipping_fee = 0.0
+        discount = subtotal * 0.10
+    elif subtotal > 200:
+        print("\n[Standard Checkout] Subtotal over RM 200. Applying Free Shipping...")
+        shipping_fee = 0.0
+        discount = 0.0
+    else:
+        print("\n[Standard Checkout] Adding standard RM 15 shipping fee...")
+        shipping_fee = 15.00
+        discount = 0.0
+        
+    final_total = (subtotal - discount) + shipping_fee
+
+    # Print Final Receipt
+    print("\n" + "."*50)
+    print("                AMAZON OFFICIAL RECEIPT                ")
+    print("."*50)
+    for item in cart:
+        p = item['product']
+        q = item['qty']
+        line_total = p.price * q
+        print(f"{q}x {p.name[:25]:<25} : RM {line_total:8.2f}")
+    
+    print("-" * 50)
+    print(f"Subtotal                       : RM {subtotal:8.2f}")
+    print(f"Prime Discount                 :-RM {discount:8.2f}")
+    print(f"Shipping Fee                   :+RM {shipping_fee:8.2f}")
+    print("=" * 50)
+    print(f"TOTAL AMOUNT DUE               : RM {final_total:8.2f}")
+    print("=" * 50)
+    print("Thank you for shopping with us!")
+
+
 if __name__ == '__main__':
     main()
